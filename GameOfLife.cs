@@ -18,6 +18,8 @@ namespace GameOfLife
         public int[,] currentMap;
         public int[,] newMap;
 
+        private string buffer = "";
+
         Stopwatch watch = new Stopwatch();
         #endregion
 
@@ -60,7 +62,7 @@ namespace GameOfLife
 
         public void Draw()
         {
-            string buffer = "";
+            buffer = "";
 
             for(int x = 0; x < mapWidth; x++)
             {
