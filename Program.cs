@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace GameOfLife
 {
@@ -6,7 +7,32 @@ namespace GameOfLife
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            GameOfLife gol = new GameOfLife(40, 90, true);
+
+            /*gol.currentMap[10, 10] = 1;
+            gol.currentMap[10, 11] = 1;
+            gol.currentMap[10, 12] = 1;
+            gol.currentMap[10, 13] = 1;
+            gol.currentMap[10, 14] = 1;
+
+            gol.currentMap[12, 10] = 1;
+            gol.currentMap[12, 14] = 1;
+
+            gol.currentMap[15, 10] = 1;
+            gol.currentMap[15, 11] = 1;
+            gol.currentMap[15, 12] = 1;
+            gol.currentMap[15, 13] = 1;
+            gol.currentMap[15, 14] = 1;*/
+
+            Console.Clear();
+            Console.CursorVisible = false;
+
+            while(true)
+            {
+                gol.Draw();
+                gol.NextGeneration();
+                Thread.Sleep(100);
+            }
         }
     }
 }
