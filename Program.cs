@@ -14,7 +14,7 @@ namespace GameOfLife
                 sleepTime = int.Parse(args[0]);
             }
 
-            GameOfLife gol = new GameOfLife(40, 90, true);
+            GameOfLife gol = new GameOfLife(60, 150, true);
 
             /*gol.currentMap[10, 10] = 1;
             gol.currentMap[10, 11] = 1;
