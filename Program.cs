@@ -36,20 +36,20 @@ namespace GameOfLife
             Console.CursorVisible = false;
 
             string time = DateTime.Now.ToString("ss");
-            int interation = 0;
+            int iterations = 0;
 
             while(true)
-            { 
+            {
                 gol.Draw();
                 gol.NextGeneration();
                 if(DateTime.Now.ToString("ss") == time)
                 {
-                    interation++;
+                    iterations++;
                 }
                 else
                 {
-                    Console.WriteLine("\n\nFPS : {0}", /*watch.ElapsedMilliseconds*/ interation);
-                    interation  = 0;
+                    Console.WriteLine("\n\nFPS : {0}", iterations);
+                    iterations = 0;
                 }
                 time = DateTime.Now.ToString("ss");
                 Thread.Sleep(sleepTime);
