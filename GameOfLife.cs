@@ -11,6 +11,7 @@ namespace GameOfLife
         public readonly bool generateRandomMap;
 
         private uint currentGeneration = 0;
+        private uint population = 0;
 
         public int[,] currentMap;
         public int[,] newMap;
@@ -44,6 +45,7 @@ namespace GameOfLife
                 }
             }
 
+            CalculatePopulation();
             TransferNewToCurrentMap();
             currentGeneration++;
         }
@@ -69,7 +71,7 @@ namespace GameOfLife
             }
 
             Console.SetCursorPosition(0, 0);
-            Console.WriteLine("Génération : {0}", currentGeneration);
+            Console.WriteLine("Génération : {0}   -   Population : {1}", currentGeneration, population);
 
             Console.SetCursorPosition(0, 2);
             for(int i = 0; i < mapHeight; i++)
@@ -85,6 +87,22 @@ namespace GameOfLife
         }
 
         #region private
+
+        private void CalculatePopulation()
+        {
+            uint temp = 0;
+
+            for(int x = 0; x < mapWidth; x++)
+            {
+                for(int y = 0; y < mapHeight; y++)
+                {
+                    if(currentMap[x, y] == 1)
+                        temp++;
+                }
+            }
+
+            population = temp;
+        }
 
         private void GenerateMap()
         {
@@ -149,6 +167,5 @@ namespace GameOfLife
         }
 
         #endregion
-        
     }
 }

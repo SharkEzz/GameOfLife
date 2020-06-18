@@ -7,6 +7,13 @@ namespace GameOfLife
     {
         static void Main(string[] args)
         {
+            int sleepTime = 100;
+            
+            if(args.Length != 0)
+            {
+                sleepTime = int.Parse(args[0]);
+            }
+
             GameOfLife gol = new GameOfLife(40, 90, true);
 
             /*gol.currentMap[10, 10] = 1;
@@ -31,7 +38,7 @@ namespace GameOfLife
             {
                 gol.Draw();
                 gol.NextGeneration();
-                Thread.Sleep(100);
+                Thread.Sleep(sleepTime);
             }
         }
     }
