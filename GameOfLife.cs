@@ -13,14 +13,11 @@ namespace GameOfLife
 
         private uint currentGeneration = 0;
         private uint population = 0;
-        private long generationDuration;
 
         public int[,] currentMap;
         public int[,] newMap;
 
         private string buffer = "";
-
-        Stopwatch watch = new Stopwatch();
         #endregion
 
         public GameOfLife(int width, int height, bool generateRandomMap)
@@ -34,7 +31,6 @@ namespace GameOfLife
 
         public void NextGeneration()
         {
-            watch.Start();
             for(int x = 0; x < mapWidth; x++)
             {
                 for(int y = 0; y < mapHeight; y++)
@@ -55,9 +51,6 @@ namespace GameOfLife
             CalculatePopulation();
             TransferNewToCurrentMap();
             currentGeneration++;
-            watch.Stop();
-            generationDuration = watch.ElapsedMilliseconds;
-            watch.Reset();
         }
 
         public void Draw()
@@ -81,7 +74,7 @@ namespace GameOfLife
             }
 
             Console.SetCursorPosition(0, 0);
-            Console.WriteLine("Génération : {0}   -   Population : {1}   -   Généré en : {2} ms ", currentGeneration, population, generationDuration);
+            Console.WriteLine("Génération : {0}   -   Population : {1}", currentGeneration, population);
 
             Console.SetCursorPosition(0, 2);
             for(int i = 0; i < mapHeight; i++)
@@ -126,7 +119,7 @@ namespace GameOfLife
                 {
                     if(generateRandomMap)
                     {
-                        if(random.Next(1, 101) < 65)
+                        if(random.Next(1, 101) < 80)
                         {
                             currentMap[x, y] = 0;
                         }

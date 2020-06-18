@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Diagnostics;
 
 namespace GameOfLife
 {
@@ -34,10 +35,23 @@ namespace GameOfLife
             Console.Clear();
             Console.CursorVisible = false;
 
+            string time = DateTime.Now.ToString("ss");
+            int interation = 0;
+
             while(true)
-            {
+            { 
                 gol.Draw();
                 gol.NextGeneration();
+                if(DateTime.Now.ToString("ss") == time)
+                {
+                    interation++;
+                }
+                else
+                {
+                    Console.WriteLine("\n\nFPS : {0}", /*watch.ElapsedMilliseconds*/ interation);
+                    interation  = 0;
+                }
+                time = DateTime.Now.ToString("ss");
                 Thread.Sleep(sleepTime);
             }
         }
