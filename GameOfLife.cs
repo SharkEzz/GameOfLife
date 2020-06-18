@@ -48,35 +48,6 @@ namespace GameOfLife
             currentGeneration++;
         }
 
-        private void GenerateMap()
-        {
-            currentMap = new int[mapWidth, mapHeight];
-            newMap = new int[mapWidth, mapHeight];
-
-            Random random = new Random();
-            for(int x = 0; x < mapWidth; x++)
-            {
-                for(int y = 0; y < mapHeight; y++)
-                {
-                    if(generateRandomMap)
-                    {
-                        if(random.Next(1, 101) < 70)
-                        {
-                            currentMap[x, y] = 0;
-                        }
-                        else
-                        {
-                            currentMap[x, y] = 1;
-                        }
-                    }
-                    else
-                    {
-                        currentMap[x, y] = 0;
-                    }
-                }
-            }
-        }
-
         public void Draw()
         {
             string buffer = "";
@@ -114,6 +85,35 @@ namespace GameOfLife
         }
 
         #region private
+
+        private void GenerateMap()
+        {
+            currentMap = new int[mapWidth, mapHeight];
+            newMap = new int[mapWidth, mapHeight];
+
+            Random random = new Random();
+            for(int x = 0; x < mapWidth; x++)
+            {
+                for(int y = 0; y < mapHeight; y++)
+                {
+                    if(generateRandomMap)
+                    {
+                        if(random.Next(1, 101) < 70)
+                        {
+                            currentMap[x, y] = 0;
+                        }
+                        else
+                        {
+                            currentMap[x, y] = 1;
+                        }
+                    }
+                    else
+                    {
+                        currentMap[x, y] = 0;
+                    }
+                }
+            }
+        }
 
         private void TransferNewToCurrentMap()
         {
